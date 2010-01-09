@@ -1,0 +1,35 @@
+#todo-list li
+	border-bottom: 1px solid lightgray
+	padding: 4px
+
+	button
+		width: 80px
+
+		&.start
+			display: inline
+
+		&.complete
+			display: none
+
+	span.done-mark
+		display: none
+
+	&.started
+		button
+			&.start
+				display: none
+
+			&.complete
+				display: inline
+
+	&.completed
+		span.subject
+			text-decoration: line-through
+			background-color: #0f0
+
+		button
+			&.start, &.complete
+			display: none
+
+		span.done-mark
+			display: inline

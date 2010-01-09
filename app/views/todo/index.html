@@ -1,0 +1,51 @@
+Autofocus
+
+<ul id="todo-list">
+	<% @todos.each do |each| %>
+	<li name="<%=each.id%>" class="<%=item_class_of_todo(each)%>">
+		<button class="start">Start</button>
+		<button class="complete">Complete</button>
+		<span class="done-mark">DONE</span>
+		<span class="subject"><%=h each.subject %></span>
+	</li>
+	<% end %>
+</ul>
+
+<div id="add-todo-dialog">
+<form action="/todo/add" method="post">
+	<input type="text" name="subject" size="80" max="80">
+	<input type="submit" value="Add">
+</form>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#add-todo-dialog form").submit(function() {
+		var form = this;
+		$.post(form.action, {subject: form.subject.value},
+			function(data) {
+				$("#todo-list").append($("<li><span>" + data.todo.subject + "</span><button>Start</button></li>"));
+				form.subject.value = "";
+		  	}, "json");
+		return false;
+	});
+	
+	$("#todo-list li button.start").click(function() {
+		var item = $($(this).parent());
+		$.post("/todo/start", {id: item.attr("name")},
+			function(data) {
+				item.addClass("started");
+			}, "json");
+		return false;
+	});
+
+	$("#todo-list li button.complete").click(function() {
+		var item = $($(this).parent());
+		$.post("/todo/complete", {id: item.attr("name")},
+			function(data) {
+				item.addClass("completed");
+			}, "json");
+		return false;
+	});
+});
+</script>

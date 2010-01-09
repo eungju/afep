@@ -1,0 +1,22 @@
+#todo-list li {
+  border-bottom: 1px solid lightgray;
+  padding: 4px; }
+  #todo-list li button {
+    width: 80px; }
+    #todo-list li button.start {
+      display: inline; }
+    #todo-list li button.complete {
+      display: none; }
+  #todo-list li span.done-mark {
+    display: none; }
+  #todo-list li.started button.start {
+    display: none; }
+  #todo-list li.started button.complete {
+    display: inline; }
+  #todo-list li.completed span.subject {
+    text-decoration: line-through;
+    background-color: #0f0; }
+  #todo-list li.completed button {
+    display: none; }
+  #todo-list li.completed span.done-mark {
+    display: inline; }
