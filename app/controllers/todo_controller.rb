@@ -3,8 +3,7 @@ class TodoController < ApplicationController
     @todos = Todo.find(:all, :order=>:id)
   end
   def add
-    todo = Todo.new(:subject=>params[:subject], :created_at=>Time.now)
-    todo.save
+    todo = Todo.create(:subject=>params[:subject], :created_at=>Time.now)
     render :json=>todo
   end
   def start

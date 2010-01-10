@@ -1,34 +1,34 @@
-#todo-list li
-	border-bottom: 1px solid lightgray
-	padding: 4px
+#todo_list li
+  border-bottom: 1px solid lightgray
+  padding: 4px
+  list-style-type: none
 
-	button
-		width: 80px
+  button
+    width: 80px
 
-		&.start
-			display: inline
+  &.todo
+    button
+      &.start
+        display: inline
 
-		&.complete
-			display: none
+      &.complete
+        display: none
 
-	span.done-mark
-		display: none
+  &.started
+    span.subject
+      font-weight: bold
 
-	&.started
-		button
-			&.start
-				display: none
+    button
+      &.start
+        display: none
 
-			&.complete
-				display: inline
+      &.complete
+        display: inline
 
-	&.completed
-		span.subject
-			text-decoration: line-through
+  &.completed
+    span.subject
+      text-decoration: line-through
 
-		button
-			&.start, &.complete
-			display: none
-
-		span.done-mark
-			display: inline
+    button
+      &.start, &.complete
+      display: none
