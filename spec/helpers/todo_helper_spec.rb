@@ -2,10 +2,13 @@ require 'spec_helper'
 
 describe TodoHelper do
 
-  #Delete this example and add some real ones or delete this file
-  it "should be included in the object returned by #helper" do
-    included_modules = (class << helper; self; end).send :included_modules
-    included_modules.should include(TodoHelper)
+  it "should know proper css class name of the todo" do
+    todo = Todo.new(:subject=>"something", :created_at=>Time.now)
+    helper.item_class_of_todo(todo).should eql("todo")
+    todo.mark_as_started
+    helper.item_class_of_todo(todo).should eql("started")
+    todo.mark_as_completed
+    helper.item_class_of_todo(todo).should eql("completed")
   end
 
 end
