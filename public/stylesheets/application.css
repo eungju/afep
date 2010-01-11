@@ -16,5 +16,5 @@
     display: inline; }
   #todo_list li.completed span.subject {
     text-decoration: line-through; }
-  #todo_list li.completed button {
+  #todo_list li.completed button.start, #todo_list li.completed button.complete {
     display: none; }
