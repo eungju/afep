@@ -9,6 +9,7 @@ Autofocus
 	</li>
 	<% end %>
 </ul>
+<button class="close_list" style="width: 100%">Close list</button>
 
 <div id="add_todo_dialog">
 <form>
@@ -16,7 +17,7 @@ Autofocus
 	<input type="submit" value="Add">
 </form>
 </div>
-
+	
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -63,6 +64,16 @@ $(document).ready(function() {
 				form.subject.value = "";
 		  	}, "json");
 		return false;
+	});
+	
+	$("button.close_list").click(function() {
+		var last_item = $("#todo_list li:last");
+		$.post("/todo/close_list", {todo_id: todo_id(last_item.attr("id"))},
+			function(data) {
+				$("#todo_list li.closed_mark")
+					.removeClass("closed_mark").addClass("completely_closed_mark");
+				last_item.addClass("closed_mark");
+			}, "json");
 	});
 });
 </script>
