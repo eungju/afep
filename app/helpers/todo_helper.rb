@@ -24,6 +24,6 @@ module TodoHelper
     end
   end
   def item_class_of_todo(todo)
-    [class_for_todo_state(todo), class_for_closed_mark(todo)].join " "
+    ([class_for_todo_state(todo), class_for_closed_mark(todo)].reject { |e| e == "" }).join " "
   end
 end
