@@ -19,6 +19,8 @@ module TodoHelper
       "closed_mark"
     elsif has_completely_closed_list and todo.id == @recent_closed_marks[1].todo_id
       "completely_closed_mark"
+    elsif has_completely_closed_list and todo.id <= @recent_closed_marks[1].todo_id and not todo.started?
+      "review"
     else
       ""
     end

@@ -18,6 +18,8 @@
     text-decoration: line-through; }
   #todo_list li.completed button.start, #todo_list li.completed button.complete {
     display: none; }
+  #todo_list li.review {
+    background-color: #ff8; }
   #todo_list li.completely_closed_mark {
     border-bottom: 2px solid black; }
   #todo_list li.closed_mark {
