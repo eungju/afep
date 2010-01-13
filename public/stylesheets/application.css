@@ -1,26 +1,26 @@
-#todo_list li {
+#task_list li {
   border-bottom: 1px solid lightgray;
   padding: 4px;
   list-style-type: none; }
-  #todo_list li button {
+  #task_list li button {
     width: 80px; }
-  #todo_list li.todo button.start {
+  #task_list li.todo button.start {
     display: inline; }
-  #todo_list li.todo button.complete {
+  #task_list li.todo button.complete {
     display: none; }
-  #todo_list li.started span.subject {
+  #task_list li.started span.subject {
     font-weight: bold; }
-  #todo_list li.started button.start {
+  #task_list li.started button.start {
     display: none; }
-  #todo_list li.started button.complete {
+  #task_list li.started button.complete {
     display: inline; }
-  #todo_list li.completed span.subject {
+  #task_list li.completed span.subject {
     text-decoration: line-through; }
-  #todo_list li.completed button.start, #todo_list li.completed button.complete {
+  #task_list li.completed button.start, #task_list li.completed button.complete {
     display: none; }
-  #todo_list li.review {
+  #task_list li.review {
     background-color: #ff8; }
-  #todo_list li.completely_closed_mark {
+  #task_list li.completely_closed_mark {
     border-bottom: 2px solid black; }
-  #todo_list li.closed_mark {
+  #task_list li.closed_mark {
     border-bottom: 2px solid red; }

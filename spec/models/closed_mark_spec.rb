@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ClosedMark do
   before(:each) do
     @valid_attributes = {
-      :todo_id=>1
+      :task_id=>1
     }
   end
 

@@ -1,8 +1,8 @@
 Autofocus
 
-<ul id="todo_list">
-	<% @todos.each do |each| %>
-	<li id="todo_<%=each.id%>" class="<%=item_class_of_todo(each)%>">
+<ul id="task_list">
+	<% @tasks.each do |each| %>
+	<li id="task_<%=each.id%>" class="<%=item_class_of_task(each)%>">
 		<button class="start">Start</button>
 		<button class="complete">Complete</button>
 		<span class="subject"><%=h each.subject %></span>
@@ -11,7 +11,7 @@ Autofocus
 </ul>
 <button class="close_list" style="width: 100%">Close list</button>
 
-<div id="add_todo_dialog">
+<div id="add_task_dialog">
 <form>
 	<input type="text" name="subject" size="80" max="80">
 	<input type="submit" value="Add">
@@ -21,13 +21,13 @@ Autofocus
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	function todo_id(element_id) {
+	function task_id(element_id) {
 		return element_id.split("_")[1];
 	}
 	
-	function todo_start_callback() {
+	function task_start_callback() {
 		var item = $($(this).parent());
-		$.post("/todo/start", {id: todo_id(item.attr("id"))},
+		$.post("/task/start", {id: task_id(item.attr("id"))},
 			function(data) {
 				item.removeClass("todo");
 				item.addClass("started");
@@ -35,9 +35,9 @@ $(document).ready(function() {
 		return false;
 	}
 	
-	function todo_complete_callback() {
+	function task_complete_callback() {
 		var item = $($(this).parent());
-		$.post("/todo/complete", {id: todo_id(item.attr("id"))},
+		$.post("/task/complete", {id: task_id(item.attr("id"))},
 			function(data) {
 				item.removeClass("started");
 				item.addClass("completed");
@@ -45,32 +45,32 @@ $(document).ready(function() {
 		return false;
 	}
 	
-	$("#todo_list li button.start").click(todo_start_callback);
-	$("#todo_list li button.complete").click(todo_complete_callback);
+	$("#task_list li button.start").click(task_start_callback);
+	$("#task_list li button.complete").click(task_complete_callback);
 
-	$("#add_todo_dialog form").submit(function() {
+	$("#add_task_dialog form").submit(function() {
 		var form = this;
-		$.post("/todo/add", {subject: form.subject.value},
+		$.post("/task/add", {subject: form.subject.value},
 			function(data) {
 				var startButton = $("<button>").addClass("start").text("Start")
-					.click(todo_start_callback);
+					.click(task_start_callback);
 				var completeButton = $("<button>").addClass("complete").text("Complete")
-					.click(todo_complete_callback);
-				var li = $("<li>").attr("id", "todo_" + data.todo.id).addClass("todo")
+					.click(task_complete_callback);
+				var li = $("<li>").attr("id", "task_" + data.task.id).addClass("todo")
 					.append(startButton)
 					.append(completeButton)
-					.append($("<span>").addClass("subject").text(data.todo.subject));
-				$("#todo_list").append(li);
+					.append($("<span>").addClass("subject").text(data.task.subject));
+				$("#task_list").append(li);
 				form.subject.value = "";
 		  	}, "json");
 		return false;
 	});
 	
 	$("button.close_list").click(function() {
-		var last_item = $("#todo_list li:last");
-		$.post("/todo/close_list", {todo_id: todo_id(last_item.attr("id"))},
+		var last_item = $("#task_list li:last");
+		$.post("/task/close_list", {task_id: task_id(last_item.attr("id"))},
 			function(data) {
-				$("#todo_list li.closed_mark")
+				$("#task_list li.closed_mark")
 					.removeClass("closed_mark").addClass("completely_closed_mark");
 				last_item.addClass("closed_mark");
 			}, "json");

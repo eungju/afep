@@ -1,4 +1,4 @@
-class Todo < ActiveRecord::Base
+class Task < ActiveRecord::Base
   def mark_as_started
     if started? or completed?
       raise "Already started"
