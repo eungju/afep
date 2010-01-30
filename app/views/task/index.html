@@ -67,13 +67,20 @@ $(document).ready(function() {
 	});
 	
 	$("button.close_list").click(function() {
-		var last_item = $("#task_list li:last");
-		$.post("/task/close_list", {task_id: task_id(last_item.attr("id"))},
-			function(data) {
+		$.ajax({
+			url: "/task/close_list",
+			type: "POST",
+			data: {},
+			dataType: "json",
+			success: function (data) {
 				$("#task_list li.closed_mark")
 					.removeClass("closed_mark").addClass("completely_closed_mark");
-				last_item.addClass("closed_mark");
-			}, "json");
+				$("#task_" + data.closed_mark.task_id).addClass("closed_mark");
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				alert(xhr.responseText);
+			}
+		});
 	});
 });
 </script>

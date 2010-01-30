@@ -19,7 +19,7 @@
   #task_list li.completed button.start, #task_list li.completed button.complete {
     display: none; }
   #task_list li.review {
-    background-color: #ff8; }
+    background-color: #ff6; }
   #task_list li.completely_closed_mark {
     border-bottom: 2px solid black; }
   #task_list li.closed_mark {
