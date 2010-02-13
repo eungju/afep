@@ -1,10 +1,4 @@
 module TaskHelper
-  def has_closed_list
-    @recent_closed_marks.size >= 1
-  end
-  def has_completely_closed_list
-    @recent_closed_marks.size >= 2
-  end
   def class_for_task_state(task)
     if task.completed?
       "completed"
@@ -15,11 +9,11 @@ module TaskHelper
     end
   end
   def class_for_closed_mark(task)
-    if has_closed_list and task.id == @recent_closed_marks[0].task_id
+    if @working_list.has_closed_list and task.id == @working_list.closed_mark.task_id
       "closed_mark"
-    elsif has_completely_closed_list and task.id == @recent_closed_marks[1].task_id
+    elsif @working_list.has_completely_closed_list and task.id == @working_list.completely_closed_mark.task_id
       "completely_closed_mark"
-    elsif has_completely_closed_list and task.id <= @recent_closed_marks[1].task_id and not task.started?
+    elsif @working_list.has_completely_closed_list and task.id < @working_list.completely_closed_mark.task_id and not task.started?
       "review"
     else
       ""

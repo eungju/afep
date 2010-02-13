@@ -1,86 +1,28 @@
 Autofocus
 
+<% if flash[:error] %>
+  <div class="error">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <ul id="task_list">
-	<% @tasks.each do |each| %>
+	<% @working_list.tasks.each do |each| %>
 	<li id="task_<%=each.id%>" class="<%=item_class_of_task(each)%>">
-		<button class="start">Start</button>
-		<button class="complete">Complete</button>
+		<a href="/task/start?id=<%=each.id%>" class="button start">Start</a>
+		<a href="/task/complete?id=<%=each.id%>" class="button complete">Complete</a>
 		<span class="subject"><%=h each.subject %></span>
 	</li>
 	<% end %>
 </ul>
-<button class="close_list" style="width: 100%">Close list</button>
+<a href="/task/close_list" class="close_list">Close list</a>
 
 <div id="add_task_dialog">
-<form>
+<% form_tag(:action=>:add) do %>
 	<input type="text" name="subject" size="80" max="80">
 	<input type="submit" value="Add">
-</form>
+<% end %>
 </div>
 	
 <script type="text/javascript">
-$(document).ready(function() {
-	
-	function task_id(element_id) {
-		return element_id.split("_")[1];
-	}
-	
-	function task_start_callback() {
-		var item = $($(this).parent());
-		$.post("/task/start", {id: task_id(item.attr("id"))},
-			function(data) {
-				item.removeClass("todo");
-				item.addClass("started");
-			}, "json");
-		return false;
-	}
-	
-	function task_complete_callback() {
-		var item = $($(this).parent());
-		$.post("/task/complete", {id: task_id(item.attr("id"))},
-			function(data) {
-				item.removeClass("started");
-				item.addClass("completed");
-			}, "json");
-		return false;
-	}
-	
-	$("#task_list li button.start").click(task_start_callback);
-	$("#task_list li button.complete").click(task_complete_callback);
-
-	$("#add_task_dialog form").submit(function() {
-		var form = this;
-		$.post("/task/add", {subject: form.subject.value},
-			function(data) {
-				var startButton = $("<button>").addClass("start").text("Start")
-					.click(task_start_callback);
-				var completeButton = $("<button>").addClass("complete").text("Complete")
-					.click(task_complete_callback);
-				var li = $("<li>").attr("id", "task_" + data.task.id).addClass("todo")
-					.append(startButton)
-					.append(completeButton)
-					.append($("<span>").addClass("subject").text(data.task.subject));
-				$("#task_list").append(li);
-				form.subject.value = "";
-		  	}, "json");
-		return false;
-	});
-	
-	$("button.close_list").click(function() {
-		$.ajax({
-			url: "/task/close_list",
-			type: "POST",
-			data: {},
-			dataType: "json",
-			success: function (data) {
-				$("#task_list li.closed_mark")
-					.removeClass("closed_mark").addClass("completely_closed_mark");
-				$("#task_" + data.closed_mark.task_id).addClass("closed_mark");
-			},
-			error: function(xhr, textStatus, errorThrown) {
-				alert(xhr.responseText);
-			}
-		});
-	});
-});
 </script>

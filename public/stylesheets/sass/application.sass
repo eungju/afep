@@ -3,11 +3,13 @@
   padding: 4px
   list-style-type: none
 
-  button
-    width: 80px
+  a.button
+    padding: 2px
+    background-color: lightgray
+    border: 1px solid darkgray
 
   &.todo
-    button
+    a.button
       &.start
         display: inline
 
@@ -18,7 +20,7 @@
     span.subject
       font-weight: bold
 
-    button
+    a.button
       &.start
         display: none
 
@@ -29,13 +31,15 @@
     span.subject
       text-decoration: line-through
 
-    button
+    a.button
       &.start, &.complete
         display: none
+
   &.review
     background-color: #ff6
+
   &.completely_closed_mark
     border-bottom: 2px solid black
+
   &.closed_mark
     border-bottom: 2px solid red
-    
