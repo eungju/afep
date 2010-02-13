@@ -1,9 +1,9 @@
 module TaskHelper
   def class_for_task_state(task)
     if task.completed?
-      "completed"
+      "done"
     elsif task.started?
-      "started"
+      "doing"
     else
       "todo"
     end

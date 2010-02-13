@@ -11,9 +11,9 @@ describe TaskHelper do
     task = Task.new(:subject=>"something", :created_at=>Time.now)
     helper.item_class_of_task(task).should eql("todo")
     task.mark_as_started
-    helper.item_class_of_task(task).should eql("started")
+    helper.item_class_of_task(task).should eql("doing")
     task.mark_as_completed
-    helper.item_class_of_task(task).should eql("completed")
+    helper.item_class_of_task(task).should eql("done")
   end
 
 end

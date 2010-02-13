@@ -1,3 +1,10 @@
+body {
+  font-family: "Helvetica","Arial","NanumGothic","NanumGothicOTF",sans-serif;
+  font-size: 10pt; }
+
+#task_list {
+  padding: 0; }
+
 #task_list li {
   border-bottom: 1px solid lightgray;
   padding: 4px;
@@ -10,15 +17,15 @@
     display: inline; }
   #task_list li.todo a.button.complete {
     display: none; }
-  #task_list li.started span.subject {
+  #task_list li.doing span.subject {
     font-weight: bold; }
-  #task_list li.started a.button.start {
+  #task_list li.doing a.button.start {
     display: none; }
-  #task_list li.started a.button.complete {
+  #task_list li.doing a.button.complete {
     display: inline; }
-  #task_list li.completed span.subject {
+  #task_list li.done span.subject {
     text-decoration: line-through; }
-  #task_list li.completed a.button.start, #task_list li.completed a.button.complete {
+  #task_list li.done a.button.start, #task_list li.done a.button.complete {
     display: none; }
   #task_list li.review {
     background-color: #ff6; }

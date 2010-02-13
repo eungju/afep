@@ -1,3 +1,10 @@
+body
+  font-family: "Helvetica","Arial","NanumGothic","NanumGothicOTF",sans-serif
+  font-size: 10pt
+
+#task_list
+  padding: 0
+  
 #task_list li
   border-bottom: 1px solid lightgray
   padding: 4px
@@ -16,7 +23,7 @@
       &.complete
         display: none
 
-  &.started
+  &.doing
     span.subject
       font-weight: bold
 
@@ -27,7 +34,7 @@
       &.complete
         display: inline
 
-  &.completed
+  &.done
     span.subject
       text-decoration: line-through
 
