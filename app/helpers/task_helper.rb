@@ -13,13 +13,18 @@ module TaskHelper
       "closed_mark"
     elsif @working_list.has_completely_closed_list and task.id == @working_list.completely_closed_mark.task_id
       "completely_closed_mark"
-    elsif @working_list.has_completely_closed_list and task.id < @working_list.completely_closed_mark.task_id and not task.started?
+    else
+      ""
+    end
+  end
+  def class_for_review(task)
+    if @working_list.has_completely_closed_list and task.id <= @working_list.completely_closed_mark.task_id and not task.completed?
       "review"
     else
       ""
     end
   end
   def item_class_of_task(task)
-    ([class_for_task_state(task), class_for_closed_mark(task)].reject { |e| e == "" }).join " "
+    ([class_for_task_state(task), class_for_closed_mark(task), class_for_review(task)].reject { |e| e == "" }).join " "
   end
 end

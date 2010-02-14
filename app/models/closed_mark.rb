@@ -1,6 +1,9 @@
 class ClosedMark < ActiveRecord::Base
+  def self.recent(n)
+    find(:all, {:order => "task_id DESC", :limit => n})
+  end
   def self.find_completed
-    recent = ClosedMark.find(:all, :order=>"task_id DESC", :limit=>2)
-    recent[1] if recent.size == 2
+    marks = recent(2)
+    marks[1] if marks.size == 2
   end
 end
