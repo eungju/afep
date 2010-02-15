@@ -16,33 +16,37 @@ a.button
   padding: 4px
   list-style-type: none
 
-
   &.todo
     a.button
       &.start
         display: inline
-
       &.complete
+        display: none
+      &.cancel
         display: none
 
   &.doing
     span.subject
       font-weight: bold
-
     a.button
       &.start
         display: none
-
       &.complete
         display: inline
+      &.cancel
+        display: none
 
   &.done
     span.subject
       text-decoration: line-through
-
     a.button
-      &.start, &.complete
+      &.start, &.complete, &.cancel
         display: none
+
+  &.todo.review
+    a.button
+      &.cancel
+        display: inline
 
   &.review
     background-color: #ff6

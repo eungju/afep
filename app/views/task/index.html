@@ -14,6 +14,7 @@
 	<li id="task_<%=each.id%>" class="<%=item_class_of_task(each)%>">
 		<a href="/task/start?id=<%=each.id%>" class="button start">Start</a>
 		<a href="/task/complete?id=<%=each.id%>" class="button complete">Complete</a>
+		<a href="/task/cancel?id=<%=each.id%>" class="button cancel">Cancel</a>
 		<span class="subject"><%=h each.subject %></span>
 	</li>
 	<% end %>

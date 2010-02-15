@@ -19,16 +19,22 @@ a.button {
     display: inline; }
   #task_list li.todo a.button.complete {
     display: none; }
+  #task_list li.todo a.button.cancel {
+    display: none; }
   #task_list li.doing span.subject {
     font-weight: bold; }
   #task_list li.doing a.button.start {
     display: none; }
   #task_list li.doing a.button.complete {
     display: inline; }
+  #task_list li.doing a.button.cancel {
+    display: none; }
   #task_list li.done span.subject {
     text-decoration: line-through; }
-  #task_list li.done a.button.start, #task_list li.done a.button.complete {
+  #task_list li.done a.button.start, #task_list li.done a.button.complete, #task_list li.done a.button.cancel {
     display: none; }
+  #task_list li.todo.review a.button.cancel {
+    display: inline; }
   #task_list li.review {
     background-color: #ff6; }
   #task_list li.completely_closed_mark {
