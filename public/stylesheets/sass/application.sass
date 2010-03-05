@@ -16,8 +16,10 @@ a.button
   padding: 4px
   list-style-type: none
   
-  span.subject p
+  div.subject
     display: inline
+    & > p
+      display: inline
 
   &.todo
     a.button
@@ -29,7 +31,7 @@ a.button
         display: none
 
   &.doing
-    span.subject
+    div.subject
       font-weight: bold
     a.button
       &.start
@@ -40,7 +42,7 @@ a.button
         display: none
 
   &.done
-    span.subject
+    div.subject
       text-decoration: line-through
     a.button
       &.start, &.complete, &.cancel
