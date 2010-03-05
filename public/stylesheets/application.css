@@ -15,6 +15,8 @@ a.button {
   border-bottom: 1px solid lightgray;
   padding: 4px;
   list-style-type: none; }
+  #task_list li span.subject p {
+    display: inline; }
   #task_list li.todo a.button.start {
     display: inline; }
   #task_list li.todo a.button.complete {
