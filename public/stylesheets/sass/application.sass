@@ -25,9 +25,9 @@ a.button
     a.button
       &.start
         display: inline
-      &.complete
-        display: none
       &.cancel
+        display: inline
+      &.complete
         display: none
 
   &.doing
@@ -36,10 +36,10 @@ a.button
     a.button
       &.start
         display: none
-      &.complete
-        display: inline
       &.cancel
         display: none
+      &.complete
+        display: inline
 
   &.done
     div.subject
@@ -47,11 +47,6 @@ a.button
     a.button
       &.start, &.complete, &.cancel
         display: none
-
-  &.todo.review
-    a.button
-      &.cancel
-        display: inline
 
   &.review
     background-color: #ff6
