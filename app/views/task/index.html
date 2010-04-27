@@ -6,17 +6,45 @@
 </div>
 <% end %>
 
-<ul id="task_list">
+<table id="task_list">
+	<cols>
+		<col width="80" />
+		<col width="80" />
+		<col width="80" />
+		<col width="*" />
+	</cols>
+	<tbody>
 	<% @working_list.tasks.each do |each| %>
-	<li id="task_<%=each.id%>" class="<%=item_class_of_task(each)%>">
-		<span class="date"><%=each.created_at.strftime("%d %a %H:%M")%></span>
-		<a href="/task/start?id=<%=each.id%>" class="button start">Start</a>
-		<a href="/task/complete?id=<%=each.id%>" class="button complete">Complete</a>
-		<a href="/task/cancel?id=<%=each.id%>" class="button cancel">Cancel</a>
-		<div class="subject"><%=textile each.subject %></div>
-	</li>
+	<tr id="task_<%=each.id%>" class="<%=item_class_of_task(each)%>">
+		<td>
+			<span class="date"><%=each.created_at.strftime("%d %a %H:%M")%></span>
+		</td>
+		<td>
+			<%if each.started?%>
+			<span class="date"><%=each.started_at.strftime("%d %a %H:%M")%></span>
+			<%elsif not each.started? and not each.canceled?%>
+			<a href="/task/start?id=<%=each.id%>" class="button start">Start</a>
+			<%else%>
+			-
+			<%end%>
+		</td>
+		<td>
+			<%if each.completed?%>
+			<span class="date"><%=each.completed_at.strftime("%d %a %H:%M") if each.completed?%></span>
+			<%elsif not each.started?%>
+			<a href="/task/cancel?id=<%=each.id%>" class="button cancel">Cancel</a>
+			<%else%>
+			<a href="/task/complete?id=<%=each.id%>" class="button complete">Complete</a>
+			<%end%>
+		</td>
+		<td class="subject">
+			<%=textile each.subject %>
+		</td>
+	</tr>
 	<% end %>
-</ul>
+	</tbody>
+</table>
+
 <a href="/task/close_list" class="button close_list">Close list</a>
 
 <div id="add_task_dialog">

@@ -1,4 +1,4 @@
-body
+body, table
   font-family: "Helvetica", "Arial", "NanumGothic", "NanumGothicOTF", sans-serif
   font-size: 10pt
   
@@ -9,54 +9,37 @@ a.button
   text-decoration: none
 
 #task_list
-  padding: 0
-  
-#task_list li
-  border-bottom: 1px solid lightgray
-  padding: 4px
-  list-style-type: none
+  margin: 2px
+  border-spacing: 0
   
   span.date
     font-family: monospace
     font-size: small
     
-  div.subject
-    display: inline
-    & > p
-      display: inline
-
-  &.todo
-    a.button
-      &.start
+  tr
+    td
+      border-bottom: 1px solid lightgray
+      padding: 4px
+      list-style-type: none
+    td.subject
+      & > p
         display: inline
-      &.cancel
-        display: inline
-      &.complete
-        display: none
-
-  &.doing
-    div.subject
+        
+  tr.doing
+    td.subject
       font-weight: bold
-    a.button
-      &.start
-        display: none
-      &.cancel
-        display: none
-      &.complete
-        display: inline
 
-  &.done
-    div.subject
+  tr.done
+    td.subject
       text-decoration: line-through
-    a.button
-      &.start, &.complete, &.cancel
-        display: none
 
-  &.review
+  tr.review
     background-color: #ff6
 
-  &.completely_closed_mark
-    border-bottom: 2px solid black
+  tr.completely_closed_mark
+    td
+      border-bottom: 2px solid black
 
-  &.closed_mark
-    border-bottom: 2px solid red
+  tr.closed_mark
+    td
+      border-bottom: 2px solid red
