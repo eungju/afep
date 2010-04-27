@@ -4,6 +4,26 @@
 	<%= stylesheet_link_tag 'application' %>
 </head>
 <body>
+	<div>
+		<h1>AutofocusEP</h1>
+		<%if @user%>
+		<%=@user%> <a href="/home/signout">Sign out</a>
+		<%else%>
+		<a class="rpxnow" onclick="return false;" href="https://afep.rpxnow.com/openid/v2/signin?token_url=http%3A%2F%2Flocalhost%3A3000%2Fhome%2Frpx"> Sign In </a>
+		<%end%>
+	</div>
+	
 	<%= yield %> 
+
+	<script type="text/javascript">
+	  var rpxJsHost = (("https:" == document.location.protocol) ? "https://" : "http://static.");
+	  document.write(unescape("%3Cscript src='" + rpxJsHost +
+	"rpxnow.com/js/lib/rpx.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	  RPXNOW.overlay = true;
+	  RPXNOW.language_preference = 'en';
+	</script>
+	
 </body>
 </html>

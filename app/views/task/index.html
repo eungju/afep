@@ -1,7 +1,4 @@
 <div>
-	<h1>AutofocusEP</h1>
-</div>
-<div>
 
 <% if flash[:error] %>
 <div class="error">
@@ -12,6 +9,7 @@
 <ul id="task_list">
 	<% @working_list.tasks.each do |each| %>
 	<li id="task_<%=each.id%>" class="<%=item_class_of_task(each)%>">
+		<span class="date"><%=each.created_at.strftime("%d %a %H:%M")%></span>
 		<a href="/task/start?id=<%=each.id%>" class="button start">Start</a>
 		<a href="/task/complete?id=<%=each.id%>" class="button complete">Complete</a>
 		<a href="/task/cancel?id=<%=each.id%>" class="button cancel">Cancel</a>
