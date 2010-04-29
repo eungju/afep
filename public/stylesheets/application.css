@@ -25,6 +25,9 @@ a.button {
     font-weight: bold; }
   #task_list tr.done td.subject {
     text-decoration: line-through; }
+  #task_list tr.canceled td.subject {
+    text-decoration: line-through;
+    color: darkgray; }
   #task_list tr.review {
     background-color: #ff6; }
   #task_list tr.completely_closed_mark td {

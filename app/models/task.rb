@@ -22,9 +22,18 @@ class Task < ActiveRecord::Base
       raise "started or completed already"
     end
     self.completed_at = Time.now
-  end  
+  end
+  def todo?
+    not started? and not completed?
+  end
+  def doing?
+    started? and not completed?
+  end
+  def done?
+    started? and completed?
+  end
   def canceled?
-    self.started_at == nil and self.completed_at != nil
+    not started? and completed?
   end
   def self.find_uncompleted_before(closed_mark)
     Task.find(:first, :conditions=>["id <= ? and completed_at is null", closed_mark.task_id], :order=>"id", :limit=>1)

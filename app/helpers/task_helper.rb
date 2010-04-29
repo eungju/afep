@@ -2,12 +2,14 @@ require 'RedCloth'
 
 module TaskHelper
   def class_for_task_state(task)
-    if task.completed?
+    if task.done?
       "done"
-    elsif task.started?
+    elsif task.doing?
       "doing"
-    else
+    elsif task.todo?
       "todo"
+    elsif task.canceled?
+      "canceled"
     end
   end
   def class_for_closed_mark(task)
