@@ -6,6 +6,16 @@
 </div>
 <% end %>
 
+
+<div id="add_task_dialog">
+<% form_tag(:action=>:add) do %>
+	<input type="text" name="subject" size="80" max="80">
+	<input type="submit" value="Add">
+<% end %>
+</div>
+
+<a href="/task/close_list" class="button close_list">Close list</a>
+
 <table id="task_list">
 	<cols>
 		<col width="80" />
@@ -44,15 +54,6 @@
 	<% end %>
 	</tbody>
 </table>
-
-<a href="/task/close_list" class="button close_list">Close list</a>
-
-<div id="add_task_dialog">
-<% form_tag(:action=>:add) do %>
-	<input type="text" name="subject" size="80" max="80">
-	<input type="submit" value="Add">
-<% end %>
-</div>
 
 </div>
 

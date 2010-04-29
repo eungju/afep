@@ -28,6 +28,6 @@ a.button {
   #task_list tr.review {
     background-color: #ff6; }
   #task_list tr.completely_closed_mark td {
-    border-bottom: 2px solid black; }
+    border-top: 2px solid black; }
   #task_list tr.closed_mark td {
-    border-bottom: 2px solid red; }
+    border-top: 2px solid red; }
