@@ -10,6 +10,7 @@ a.button {
 
 #task_list {
   margin: 2px;
+  width: 100%;
   border-spacing: 0; }
   #task_list span.date {
     font-family: monospace;
