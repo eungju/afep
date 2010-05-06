@@ -15,12 +15,12 @@
 <a href="/task/close_list" class="button close_list">Close list</a>
 
 <table id="task_list">
-	<cols>
+	<colgroup>
 		<col width="80" />
 		<col width="80" />
 		<col width="80" />
 		<col width="*" />
-	</cols>
+	</colgroup>
 	<tbody>
 	<% @working_list.tasks.each do |each| %>
 	<tr id="task_<%=each.id%>" class="<%=item_class_of_task(each)%>">
