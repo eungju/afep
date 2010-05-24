@@ -8,8 +8,9 @@
 
 
 <% form_tag :action=>:add do %>
-	<input type="text" name="subject" size="100" max="255">
-	<input type="submit" value="Add">
+	<%= label_tag "subject", "New Task:" %>
+	<%= text_field_tag :subject, "", :size => 100, :max => 255 %>
+	<%= submit_tag "Add" %>
 <% end %>
 
 <a href="/task/close_list" class="button close_list">Close list</a>
