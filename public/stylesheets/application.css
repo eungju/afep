@@ -29,7 +29,7 @@ a.button {
     text-decoration: line-through;
     color: darkgray; }
   #task_list tr.review {
-    background-color: #ff6; }
+    background-color: #ffff66; }
   #task_list tr.completely_closed_mark td {
     border-top: 2px solid black; }
   #task_list tr.closed_mark td {
