@@ -6,7 +6,7 @@ describe TaskHelper do
     working_list = mock(WorkingList)
     working_list.stub!(:has_closed_list).and_return(false)
     working_list.stub!(:has_completely_closed_list).and_return(false)
-    assigns[:working_list] = working_list
+    assign(:working_list, working_list)
 
     task = Task.new(:subject=>"something", :created_at=>Time.now)
     helper.item_class_of_task(task).should eql("todo")
