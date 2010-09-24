@@ -2,8 +2,9 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
-.rspec
 
+Gemfile.lock
+.rspec
 *.tmproj
 coverage
 *.kpf
